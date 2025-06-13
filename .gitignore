@@ -1,0 +1,4 @@
+debian/scboot
+debian/.debhelper
+dist/
+**/*.env

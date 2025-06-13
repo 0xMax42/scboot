@@ -1,0 +1,15 @@
+#!/bin/sh
+set -e
+
+# Cleanup (falls altes Ziel existiert)
+rm -f /usr/local/sbin/resign-grub
+ln -sf /opt/scboot/resign-grub.sh /usr/local/sbin/resign-grub
+
+rm -f /usr/local/sbin/resign-kernel
+ln -sf /opt/scboot/resign-kernel.sh /usr/local/sbin/resign-kernel
+
+rm -f /etc/apt/apt.conf.d/99secureboot-grub-resign
+ln -sf /opt/scboot/hooks/apt-secureboot-grub-resign /etc/apt/apt.conf.d/99secureboot-grub-resign
+
+rm -f /etc/apt/apt.conf.d/99secureboot-kernel-resign
+ln -sf /opt/scboot/hooks/apt-secureboot-kernel-resign /etc/apt/apt.conf.d/99secureboot-kernel-resign

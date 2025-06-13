@@ -1,0 +1,5 @@
+scripts/resign-grub.sh                      opt/scboot/
+scripts/resign-kernel.sh                    opt/scboot/
+config/scboot.conf                          etc/scboot/
+hooks/apt-secureboot-grub-resign            opt/scboot/hooks/
+hooks/apt-secureboot-kernel-resign          opt/scboot/hooks/

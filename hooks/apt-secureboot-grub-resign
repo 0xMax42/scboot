@@ -1,0 +1,4 @@
+DPkg::Post - Invoke
+{
+  "if [ -e /boot/efi/EFI/ubuntu/grubx64.efi ]; then /usr/local/sbin/resign-grub || true; fi";
+};

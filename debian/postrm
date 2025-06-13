@@ -1,0 +1,7 @@
+#!/bin/sh
+set -e
+
+rm -f /usr/local/sbin/resign-grub
+rm -f /usr/local/sbin/resign-kernel
+rm -f /etc/apt/apt.conf.d/99secureboot-grub-resign
+rm -f /etc/apt/apt.conf.d/99secureboot-kernel-resign

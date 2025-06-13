@@ -2,3 +2,6 @@ debian/scboot
 debian/.debhelper
 dist/
 **/*.env
+debian/debhelper-build-stamp
+debian/files
+debian/scboot.substvars

@@ -5,3 +5,4 @@ dist/
 debian/debhelper-build-stamp
 debian/files
 debian/scboot.substvars
+debian/changelog

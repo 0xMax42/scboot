@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [unreleased]
+
+### 🐛 Bug Fixes
+
+- *(build)* Remove empty line from changelog - ([67d9cbc](https://git.0xmax42.io/simdev/shim/commit/67d9cbc6ff7ad7de8dfd05f874af8a0e5c395293))
+
 ## [0.4.0](https://git.0xmax42.io/simdev/shim/compare/v0.3.2..v0.4.0) - 2025-06-14
 
 ### 🚀 Features

@@ -1,16 +1,15 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-KEY=/root/.secureboot/keys/DB.key
-CRT=/root/.secureboot/keys/DB.crt
-DST_DIR=/boot
-HASH_DIR=/var/lib/secureboot/kernels
-mkdir -p "$HASH_DIR"
+SCRIPT_DIR="$(cd -- "$(dirname -- "$(readlink -f -- "$0")")" &> /dev/null && pwd)"
+source "$SCRIPT_DIR/load_config.sh"
+
+mkdir -p "$KERNEL_HASH_DIR"
 
 SRC="$1"
 BASENAME=$(basename "$SRC")
-SIGNED="$DST_DIR/${BASENAME}.signed"
-HASHFILE="$HASH_DIR/${BASENAME}.sha256"
+SIGNED="$KERNEL_DST_DIR/${BASENAME}.signed"
+HASHFILE="$KERNEL_HASH_DIR/${BASENAME}.sha256"
 
 # 1. Existenz prüfen
 [[ -f "$SRC" ]] || exit 0
@@ -36,8 +35,8 @@ rm -f "$TMP"
 
 # 5. Initrd ermitteln und kopieren
 KERNEL_VER=$(echo "$BASENAME" | sed 's/^vmlinuz-//')
-INITRD_SRC="$DST_DIR/initrd.img-$KERNEL_VER"
-INITRD_DST="$DST_DIR/initrd.img-$KERNEL_VER.signed"
+INITRD_SRC="$KERNEL_DST_DIR/initrd.img-$KERNEL_VER"
+INITRD_DST="$KERNEL_DST_DIR/initrd.img-$KERNEL_VER.signed"
 
 if [[ -f "$INITRD_SRC" ]]; then
     cp "$INITRD_SRC" "$INITRD_DST"

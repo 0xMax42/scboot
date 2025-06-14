@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.2](https://git.0xmax42.io/simdev/shim/compare/v0.1.1..v0.1.2) - 2025-06-14
+
+### 🚜 Refactor
+
+- *(build)* Improve tag handling and changelog generation - ([4488006](https://git.0xmax42.io/simdev/shim/commit/44880060a4d05a240294cef6f2be42f6b7be9d86))
+
 ## [0.1.1](https://git.0xmax42.io/simdev/shim/compare/v0.1.0..v0.1.1) - 2025-06-14
 
 ### 🚀 Features

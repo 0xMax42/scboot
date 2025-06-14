@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.3](https://git.0xmax42.io/simdev/shim/compare/v0.1.2..v0.1.3) - 2025-06-14
+
+### ⚙️ Miscellaneous Tasks
+
+- *(hooks)* Update secure boot hook and script permissions - ([fac9bce](https://git.0xmax42.io/simdev/shim/commit/fac9bcedfcaa06b29aee777ad41101b8a1be3b15))
+
 ## [0.1.2](https://git.0xmax42.io/simdev/shim/compare/v0.1.1..v0.1.2) - 2025-06-14
 
 ### 🚜 Refactor

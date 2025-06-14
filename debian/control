@@ -1,13 +1,13 @@
 Source: scboot
 Section: admin
 Priority: optional
-Maintainer: Max <mail@mpassarello.de>
+Maintainer: 0xMax42 <Mail@0xMax42.io>
 Standards-Version: 4.6.2
 Build-Depends: debhelper-compat (= 13)
 
 Package: scboot
-Architecture: all
-Depends: ${misc:Depends}
+Architecture: amd64
+Depends: ${misc:Depends}, bash, coreutils, grep, sed, mawk | gawk, findutils, sbsigntool, grub-common
 Description: Secure Boot Tools for GRUB and Kernel resigning
- This package installs scripts and config for automatically resigning
- GRUB and kernel after updates.
+  This package installs scripts and config for automatically resigning
+  GRUB and kernel after updates.

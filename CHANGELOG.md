@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [unreleased]
+## [0.3.2](https://git.0xmax42.io/simdev/shim/compare/v0.3.1..v0.3.2) - 2025-06-14
 
 ### ⚙️ Miscellaneous Tasks
 

@@ -1,7 +1,22 @@
 #!/bin/sh
 set -e
 
+# === Post-removal script for scboot ===
+# This script cleans up all symlinks and configuration changes made by scboot.
+
+# --- Remove manual resign script symlinks ---
 rm -f /usr/local/sbin/resign-grub
 rm -f /usr/local/sbin/resign-kernel
+
+# --- Remove APT hook symlinks ---
 rm -f /etc/apt/apt.conf.d/99secureboot-grub-resign
 rm -f /etc/apt/apt.conf.d/99secureboot-kernel-resign
+
+# --- Remove scboot-specific DKMS configuration block ---
+CONF="/etc/dkms/framework.conf"
+
+# Only modify the file if it exists
+if [ -f "$CONF" ]; then
+    # Delete the entire scboot configuration block between the marker comments
+    sed -i '/^# BEGIN scboot/,/^# END scboot/d' "$CONF"
+fi

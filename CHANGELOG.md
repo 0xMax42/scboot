@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [unreleased]
+
+### ⚙️ Miscellaneous Tasks
+
+- *(workflows)* Simplify release workflow with auto-changelog - ([d5f9a5d](https://git.0xmax42.io/simdev/shim/commit/d5f9a5dd434068ea150c0a58b562a1b8e0389383))
+
 ## [0.3.1](https://git.0xmax42.io/simdev/shim/compare/v0.3.0..v0.3.1) - 2025-06-14
 
 ### 🚀 Features

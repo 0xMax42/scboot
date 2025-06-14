@@ -2,10 +2,15 @@
 
 All notable changes to this project will be documented in this file.
 
-## [unreleased]
+## [0.4.0](https://git.0xmax42.io/simdev/shim/compare/v0.3.2..v0.4.0) - 2025-06-14
+
+### 🚀 Features
+
+- *(postinst)* Enhance secure boot integration - ([3a84e0e](https://git.0xmax42.io/simdev/shim/commit/3a84e0e02d796d943e0a435312d8e4bd60bfc851))
 
 ### ⚙️ Miscellaneous Tasks
 
+- *(postrm)* Clean up symlinks and configuration on removal - ([a4c99ab](https://git.0xmax42.io/simdev/shim/commit/a4c99abf38b51fccfb4d3a39a4c77f7ef0c9a6f8))
 - *(workflows)* Update action to specific version - ([14757ca](https://git.0xmax42.io/simdev/shim/commit/14757ca66a167858c3eac50f32f732f228249a2d))
 
 ## [0.3.2](https://git.0xmax42.io/simdev/shim/compare/v0.3.1..v0.3.2) - 2025-06-14

@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.3.1](https://git.0xmax42.io/simdev/shim/compare/v0.3.0..v0.3.1) - 2025-06-14
+
+### 🚀 Features
+
+- *(debian)* Add load_config script to scboot installation - ([937f5d1](https://git.0xmax42.io/simdev/shim/commit/937f5d1a9590d6e129b550ad3765866fbf5f129b))
+
 ## [0.3.0](https://git.0xmax42.io/simdev/shim/compare/v0.2.0..v0.3.0) - 2025-06-14
 
 ### 🚀 Features

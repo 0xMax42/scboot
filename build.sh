@@ -38,6 +38,7 @@ TAG="${TAG_NAME:-$(exit 1)}"
 echo "🔖 Using tag: $TAG"
 # Generate changelog
 git cliff --config cliff.debian.toml -t "$TAG" 
+sed -i '1{/^$/d}' debian/changelog
 
 # Determine package name and version
 PKG_NAME=$(dpkg-parsechangelog --show-field Source)

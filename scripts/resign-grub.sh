@@ -30,6 +30,7 @@ mv "$TMP.signed" "$GRUB_DST"
 rm -f "$TMP"
 
 # 6. Referenz-Hash aktualisieren
+mkdir -p "$(dirname "$GRUB_HASH")"
 echo "$CUR_HASH  $GRUB_SRC" | sudo tee "$GRUB_HASH" >/dev/null
 
 echo "[SecureBoot] Fertig. Neue Signatur aktiv in $GRUB_DST"

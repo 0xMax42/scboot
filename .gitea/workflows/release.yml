@@ -69,7 +69,7 @@ jobs:
       - name: Install git-cliff
         if: steps.restore-cliff.outputs.cache-hit != 'true'
         run: |
-          cargo install git-cliff --version "${{ steps.cliff_version.outputs.version }}" --features gitea
+          cargo install git-cliff --locked --version "${{ steps.cliff_version.outputs.version }}" --features gitea
 
       - name: Generate unreleased changelog (if file exists or on main)
         run: |
@@ -124,7 +124,7 @@ jobs:
       - name: Install git-cliff
         if: steps.restore-cliff.outputs.cache-hit != 'true'
         run: |
-          cargo install git-cliff --version "${{ steps.cliff_version.outputs.version }}" --features gitea
+          cargo install git-cliff --locked --version "${{ steps.cliff_version.outputs.version }}" --features gitea
 
       - name: Generate changelog for release and tag
         id: generate-changelog

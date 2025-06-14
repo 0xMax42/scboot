@@ -2,9 +2,8 @@
 name: Build-Deb
 
 on:
-  workflow_dispatch:
-  push:
-    branches: [main]
+  release:
+    types: [published]
 
 jobs:
   build:
@@ -15,6 +14,8 @@ jobs:
         uses: actions/checkout@v4
 
       - name: Build Debian package
+        env:
+          TAG_NAME: ${{ github.event.release.tag_name }}
         run: |
           chmod +x build.sh
           ./build.sh

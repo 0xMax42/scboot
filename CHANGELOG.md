@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.1.1](https://git.0xmax42.io/simdev/shim/compare/v0.1.0..v0.1.1) - 2025-06-14
+
+### 🚀 Features
+
+- *(workflows)* Trigger build on release publication - ([ac98b91](https://git.0xmax42.io/simdev/shim/commit/ac98b9196be87479b1e72fc22c2e26f82ad20b1a))
+
 ## [0.1.0] - 2025-06-14
 
 ### 🚀 Features

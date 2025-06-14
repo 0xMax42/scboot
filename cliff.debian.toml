@@ -5,10 +5,10 @@ postprocessors = [
     { pattern = '<AUTHOR_MAIL>', replace = "Mail@0xMax42.io" },
 ]
 
-header = """
-<PACKAGE_NAME> ({% if version %}{{ version | trim_start_matches(pat="v") }}{% else %}0.0.0-1{% endif %}) unstable; urgency=medium\
+header = """\
 """
 body = """\
+<PACKAGE_NAME> ({% if version %}{{ version | trim_start_matches(pat="v") }}{% else %}0.0.0-1{% endif %}) unstable; urgency=medium\
 {% for group, commits in commits | group_by(attribute="group") %}
   * {{ group | striptags | trim | upper_first }}:\
 {%   for commit in commits %}
@@ -16,7 +16,8 @@ body = """\
 {%   endfor %}\
 {% endfor %}
 
-  -- <AUTHOR_NAME> <<AUTHOR_MAIL>>  {% if version %}{{ timestamp | date(format="%a, %d %b %Y %H:%M:%S %z") }}{% else %}{{ now() | date(format="%a, %d %b %Y %H:%M:%S %z") }}{% endif %}
+  -- <AUTHOR_NAME> <<AUTHOR_MAIL>>  {% if version %}{{ now() | date(format="%a, %d %b %Y %H:%M:%S %z") }}{% else %}{{ now() | date(format="%a, %d %b %Y %H:%M:%S %z") }}{% endif %}
+
 """
 
 footer = ""

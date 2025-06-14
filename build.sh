@@ -34,10 +34,10 @@ fi
 DIST_DIR="dist"
 
 # Get Tag Name from environment variable
-TAG_NAME="${TAG_NAME:-$(exit 1)}"
-
+TAG="${TAG_NAME:-$(exit 1)}"
+echo "🔖 Using tag: $TAG"
 # Generate changelog
-git cliff --config cliff.debian.toml "$TAG_NAME"
+git cliff --config cliff.debian.toml -t "$TAG" 
 
 # Determine package name and version
 PKG_NAME=$(dpkg-parsechangelog --show-field Source)

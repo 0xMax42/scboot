@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.3.0](https://git.0xmax42.io/simdev/shim/compare/v0.2.0..v0.3.0) - 2025-06-14
+
+### 🚀 Features
+
+- *(scripts)* Centralize configuration management for secure boot - ([8430ee8](https://git.0xmax42.io/simdev/shim/commit/8430ee876915ca6925f56ad133a229137b827be7))
+
+### 🐛 Bug Fixes
+
+- *(config)* Update secure boot paths for consistency - ([1a7537d](https://git.0xmax42.io/simdev/shim/commit/1a7537dac98b16db1918d594af082cbff4de6e33))
+
 ## [0.2.0](https://git.0xmax42.io/simdev/shim/compare/v0.1.3..v0.2.0) - 2025-06-14
 
 ### 🚀 Features

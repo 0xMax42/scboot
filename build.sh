@@ -4,7 +4,7 @@ set -euo pipefail
 ###############################################################################
 # Ensure Debian build tools are installed
 ###############################################################################
-REQUIRED_PKGS=(build-essential devscripts debhelper)
+REQUIRED_PKGS=(build-essential devscripts debhelper curl tar)
 
 missing=()
 for pkg in "${REQUIRED_PKGS[@]}"; do

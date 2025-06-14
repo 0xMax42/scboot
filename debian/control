@@ -7,7 +7,7 @@ Build-Depends: debhelper-compat (= 13)
 
 Package: scboot
 Architecture: amd64
-Depends: ${misc:Depends}, bash, coreutils, grep, sed, mawk | gawk, findutils, sbsigntool, grub-common
+Depends: ${misc:Depends}, bash, coreutils, grep, sed, mawk | gawk, findutils, sbsigntool, grub-common, shim-scboot
 Description: Secure Boot Tools for GRUB and Kernel resigning
   This package installs scripts and config for automatically resigning
   GRUB and kernel after updates.

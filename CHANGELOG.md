@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.2.0](https://git.0xmax42.io/simdev/shim/compare/v0.1.3..v0.2.0) - 2025-06-14
+
+### 🚀 Features
+
+- *(package)* Add shim-scboot as a dependency - ([7018ac1](https://git.0xmax42.io/simdev/shim/commit/7018ac1f3cfe326e182a26a8ce60c37cbe0e56be))
+
 ## [0.1.3](https://git.0xmax42.io/simdev/shim/compare/v0.1.2..v0.1.3) - 2025-06-14
 
 ### ⚙️ Miscellaneous Tasks

@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.5.2](https://git.0xmax42.io/simdev/shim/compare/v0.5.1..v0.5.2) - 2025-06-15
+
+### 🐛 Bug Fixes
+
+- *(hooks)* Correct kernel resign command in post-invoke hook - ([93259c1](https://git.0xmax42.io/simdev/shim/commit/93259c1614ce9fcbd3eedf99265434be9b50ad29))
+
 ## [0.5.1](https://git.0xmax42.io/simdev/shim/compare/v0.5.0..v0.5.1) - 2025-06-15
 
 ### 🚜 Refactor

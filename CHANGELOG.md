@@ -2,10 +2,11 @@
 
 All notable changes to this project will be documented in this file.
 
-## [unreleased]
+## [0.5.0](https://git.0xmax42.io/simdev/shim/compare/v0.4.0..v0.5.0) - 2025-06-15
 
 ### 🐛 Bug Fixes
 
+- *(scripts)* Improve kernel signing process and hash handling - ([09255d4](https://git.0xmax42.io/simdev/shim/commit/09255d418cd3306eb1f7728b05e89c1c1d104daf))
 - *(build)* Remove empty line from changelog - ([67d9cbc](https://git.0xmax42.io/simdev/shim/commit/67d9cbc6ff7ad7de8dfd05f874af8a0e5c395293))
 
 ## [0.4.0](https://git.0xmax42.io/simdev/shim/compare/v0.3.2..v0.4.0) - 2025-06-14

@@ -8,50 +8,53 @@ mkdir -p "$KERNEL_HASH_DIR"
 
 SRC="$1"
 BASENAME=$(basename "$SRC")
-SIGNED="$KERNEL_DST_DIR/${BASENAME}.signed"
 HASHFILE="$KERNEL_HASH_DIR/${BASENAME}.sha256"
 
 # 1. Existenz prüfen
 [[ -f "$SRC" ]] || exit 0
 
-# 2. Aktuellen Hash des Originals berechnen
+# 2. Aktuellen Hash des *unsignierten* Originals berechnen
 CUR_HASH=$(sha256sum "$SRC" | awk '{print $1}')
 
 # 3. Früh-Exit, falls bereits signiert und identisch
-if [[ -f "$SIGNED" && -f "$HASHFILE" ]] && grep -q "$CUR_HASH" "$HASHFILE"; then
+if [[ -f "$HASHFILE" ]] && grep -q "$CUR_HASH" "$HASHFILE"; then
     echo "[SecureBoot] Kernel $BASENAME bereits signiert – übersprungen."
     exit 0
 fi
 
-echo "[SecureBoot] Signiere neuen Kernel: $BASENAME"
+echo "[SecureBoot] Signiere Kernel: $BASENAME"
 
+# 4. Temporäre Datei erzeugen und kopieren
 TMP=$(mktemp --suffix=.efi)
 cp "$SRC" "$TMP"
+
+# 5. Alte Signatur entfernen (falls vorhanden)
 sbattach --remove "$TMP" 2>/dev/null || true
 
-# 4. Kernel signieren
-sbsign --key "$KEY" --cert "$CRT" --output "$SIGNED" "$TMP"
+# 6. Signieren in temporäre Datei
+sbsign --key "$KEY" --cert "$CRT" --output "$TMP.signed" "$TMP"
 rm -f "$TMP"
 
-# 5. Initrd ermitteln und kopieren
-KERNEL_VER=$(echo "$BASENAME" | sed 's/^vmlinuz-//')
+# 7. Ersetze Original durch signierte Version
+mv "$TMP.signed" "$SRC"
+
+# 8. Initrd kopieren (ohne Suffix!)
+KERNEL_VER="${BASENAME#vmlinuz-}"
 INITRD_SRC="$KERNEL_DST_DIR/initrd.img-$KERNEL_VER"
-INITRD_DST="$KERNEL_DST_DIR/initrd.img-$KERNEL_VER.signed"
 
 if [[ -f "$INITRD_SRC" ]]; then
-    cp "$INITRD_SRC" "$INITRD_DST"
-    echo "[SecureBoot] Initrd kopiert: $INITRD_DST"
+    echo "[SecureBoot] Initrd bleibt unverändert: $INITRD_SRC"
 else
     echo "[SecureBoot] WARNUNG: Kein passendes initrd.img-$KERNEL_VER gefunden." >&2
 fi
 
-# 6. Hash speichern
+# 9. Neuen Hash speichern
 echo "$CUR_HASH  $SRC" > "$HASHFILE"
 
-# 7. GRUB aktualisieren
+# 10. GRUB-Konfiguration aktualisieren
 if command -v update-grub &>/dev/null; then
     echo "[SecureBoot] Aktualisiere GRUB-Konfiguration ..."
     update-grub
 fi
 
-echo "[SecureBoot] Fertig: $SIGNED"
+echo "[SecureBoot] Fertig: $SRC (signiert)"

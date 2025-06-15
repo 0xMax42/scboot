@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [unreleased]
+
+### 🚜 Refactor
+
+- *(scripts)* Improve kernel signing process robustness - ([7f81fd7](https://git.0xmax42.io/simdev/shim/commit/7f81fd7fb7dadfde9fe9122feaac513f594e4cc6))
+
 ## [0.5.0](https://git.0xmax42.io/simdev/shim/compare/v0.4.0..v0.5.0) - 2025-06-15
 
 ### 🐛 Bug Fixes

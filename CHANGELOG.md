@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.5.3](https://git.0xmax42.io/simdev/shim/compare/v0.5.2..v0.5.3) - 2025-06-15
+
+### 🐛 Bug Fixes
+
+- *(hooks)* Correct escape character in find command - ([d30ae24](https://git.0xmax42.io/simdev/shim/commit/d30ae2446be4dd629cde051c00d7a2052a813540))
+
 ## [0.5.2](https://git.0xmax42.io/simdev/shim/compare/v0.5.1..v0.5.2) - 2025-06-15
 
 ### 🐛 Bug Fixes

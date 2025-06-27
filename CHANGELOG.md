@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [0.5.4](https://git.0xmax42.io/simdev/shim/compare/v0.5.3..v0.5.4) - 2025-06-27
+
+### 🚜 Refactor
+
+- *(build)* Replace manual git-cliff with external changelog script - ([95a8ba3](https://git.0xmax42.io/simdev/shim/commit/95a8ba32b87f7dfa71eebd92098ffc57f1f29f39))
+
 ## [0.5.3](https://git.0xmax42.io/simdev/shim/compare/v0.5.2..v0.5.3) - 2025-06-15
 
 ### 🐛 Bug Fixes

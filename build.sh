@@ -22,23 +22,18 @@ fi
   exit 1
 }
 
-###############################################################################
-# Ensure git-cliff is available (installed e.g. via cargo)
-###############################################################################
-if ! command -v git-cliff &>/dev/null; then
-  echo "❌ git-cliff not found! Please install via 'cargo install git-cliff' or download a binary release." >&2
-  exit 1
-fi
-###############################################################################
-
 DIST_DIR="dist"
 
 # Get Tag Name from environment variable
 TAG="${TAG_NAME:-$(exit 1)}"
 echo "🔖 Using tag: $TAG"
 # Generate changelog
-git cliff --config cliff.debian.toml -t "$TAG" 
-sed -i '1{/^$/d}' debian/changelog
+curl -s https://git.0xmax42.io/actions/deb-changelog-action/raw/branch/main/run.sh | bash -s -- \
+  --version "v0" \
+  --tag "$TAG" \
+  --package_name "scboot" \
+  --author_name "0xMax42" \
+  --author_email "Mail@0xMax42.io"
 
 # Determine package name and version
 PKG_NAME=$(dpkg-parsechangelog --show-field Source)

@@ -17,11 +17,6 @@ if (( ${#missing[@]} )); then
   sudo apt-get install -y --no-install-recommends "${missing[@]}"
 fi
 
-./install-git-cliff.sh || {
-  echo "❌ Failed to install git-cliff. Please check the script or install manually." >&2
-  exit 1
-}
-
 DIST_DIR="dist"
 
 # Get Tag Name from environment variable

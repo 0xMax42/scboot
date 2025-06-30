@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [unreleased]
+
+### 🚜 Refactor
+
+- *(build)* Remove git-cliff installation script - ([52e831d](https://git.0xmax42.io/simdev/shim/commit/52e831d93ca607eec3346a266df409627d8d3d8e))
+
 ## [0.5.4](https://git.0xmax42.io/simdev/shim/compare/v0.5.3..v0.5.4) - 2025-06-27
 
 ### 🚜 Refactor

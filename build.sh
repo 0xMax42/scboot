@@ -23,7 +23,7 @@ DIST_DIR="dist"
 TAG="${TAG_NAME:-$(exit 1)}"
 echo "🔖 Using tag: $TAG"
 # Generate changelog
-curl -s https://git.0xmax42.io/actions/deb-changelog-action/raw/branch/main/run.sh | bash -s -- \
+curl -s https://git.0xmax42.io/actions/deb-changelog-action/raw/branch/main/bootstrap.sh | bash -s -- \
   --version "v0" \
   --tag "$TAG" \
   --package_name "scboot" \

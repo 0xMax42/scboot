@@ -60,6 +60,8 @@ KEY=
 # shellcheck disable=SC2034
 CRT=
 # shellcheck disable=SC2034
+DER=
+# shellcheck disable=SC2034
 KERNEL_DST_DIR=
 # shellcheck disable=SC2034
 KERNEL_HASH_DIR=
@@ -86,6 +88,7 @@ done <"${CONFIG_FILE}"
 SCBOOT_REQUIRED_VARS=(
   KEY
   CRT
+  DER
   GRUB_SRC
   GRUB_DST
   GRUB_HASH

@@ -14,7 +14,7 @@ if [[ -z "${KEY:-}" ]]; then
     log_error "Signing key path not set in scboot.conf"
     exit 1
 fi
-if [[ -z "${CRT:-}" ]]; then
+if [[ -z "${DER:-}" ]]; then
     log_error "Signing certificate path not set in scboot.conf"
     exit 1
 fi
@@ -27,8 +27,8 @@ fi
     log_error "Signing key not found: ${KEY}"
     exit 1
 }
-[[ -e "${CRT}" ]] || {
-    log_error "Signing certificate not found: ${CRT}"
+[[ -e "${DER}" ]] || {
+    log_error "Signing certificate not found: ${DER}"
     exit 1
 }
 
@@ -37,6 +37,6 @@ cat >"${DKMS_CONFIG_FILE}" <<EOF
 # BEGIN scboot
 sign_kernel_modules="yes"
 mok_signing_key="${KEY}"
-mok_certificate="${CRT}"
+mok_certificate="${DER}"
 # END scboot
 EOF

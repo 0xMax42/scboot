@@ -3,32 +3,15 @@ name: Upload Assets
 on:
   release:
     types: [published]
-  workflow_dispatch:
-    inputs:
-      tag:
-        description: Tag to build from
-        required: true
 
 jobs:
   upload-deb-package:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Determine ref
-        id: ref
-        run: |
-          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
-            echo "ref=${{ github.event.inputs.tag }}" >> "$GITHUB_OUTPUT"
-            ref="${{ github.event.inputs.tag }}"
-          else
-            echo "ref=${{ github.event.release.tag_name }}" >> "$GITHUB_OUTPUT"
-            ref="${{ github.event.release.tag_name }}"
-          fi
-          echo "Determined ref: ${{ steps.ref.outputs.ref }}"
-
       - uses: actions/checkout@v4
         with:
-          ref: ${{ steps.ref.outputs.ref }}
+          ref: ${{ github.event.release.tag_name }}
           fetch-depth: 0
 
       - name: Install dependencies

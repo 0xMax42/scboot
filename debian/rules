@@ -2,3 +2,8 @@
 
 %:
 	dh $@
+
+override_dh_auto_install:
+	dh_auto_install
+	install -Dm644 LICENSE debian/scboot/usr/share/doc/scboot/LICENSE
+	install -Dm644 README.md debian/scboot/usr/share/doc/scboot/README

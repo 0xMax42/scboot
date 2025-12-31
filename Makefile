@@ -82,7 +82,7 @@ test:
 # Build (templating)
 # ----------------------------
 
-build:
+build: clean
 	@mkdir -p "$(BUILD_DIR)"
 
 	@for dir in hooks systemd scripts config; do \

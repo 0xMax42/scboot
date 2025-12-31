@@ -1,58 +1,32 @@
-# .github/workflows/build.yml
-name: Build-Deb
+name: Upload Assets
 
 on:
   release:
     types: [published]
 
 jobs:
-  build:
+  upload-deb-package:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout source
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event.release.tag_name }}
+          fetch-depth: 0
 
-      - name: Build Debian package
+      - name: Install dependencies
+        run: |
+          apt-get update -qq
+          apt-get install -yq debcrafter-0 tea-pkg-0
+
+      - name: Build DEB package
+        run: |
+          debcrafter run --container-exec docker
+
+      - name: Upload DEB package
         env:
-          TAG_NAME: ${{ github.event.release.tag_name }}
+          GITEA_BASE_URL: https://git.0xmax42.io
+          GITEA_TOKEN: ${{ secrets.RELEASE_PUBLISH_TOKEN }}
         run: |
-          chmod +x build.sh
-          ./build.sh
 
-      - name: Sparse checkout of debrepo (only scboot/)
-        run: |
-          git init debrepo
-          cd debrepo
-          git remote add origin https://${{ secrets.DEBREPO_USERNAME }}:${{ secrets.DEBREPO_TOKEN }}@git.0xmax42.io/maxp/debrepo.git
-          git config core.sparseCheckout true
-          echo "scboot/" >> .git/info/sparse-checkout
-          git pull --depth=1 origin packages
-          git checkout -b packages
-
-      - name: Copy .deb to debrepo scboot directory
-        run: |
-          mkdir -p debrepo/scboot
-          cp ./dist/scboot_*.deb debrepo/scboot/
-
-      - name: Commit and push .deb package to debrepo
-        working-directory: debrepo
-        run: |
-          set -euo pipefail
-          git config user.name "$CI_COMMIT_AUTHOR_NAME"
-          git config user.email "$CI_COMMIT_AUTHOR_EMAIL"
-
-          # Nur adden, wenn Datei nicht bereits im Git-Index
-          for file in scboot/scboot_*.deb; do
-            if [ -e "$file" ]; then
-              if git ls-files --error-unmatch "$file" > /dev/null 2>&1; then
-                echo "Datei $file ist bereits im Repository – überspringe."
-              else
-                echo "Neue Datei $file wird hinzugefügt."
-                git add "$file"
-              fi
-            fi
-          done
-
-          git commit -m "Add scboot package version ${{ steps.read_version.outputs.VERSION }}" || echo "No changes to commit"
-          git push origin packages
+          tea-pkg publish-deb debrepo ./dist/*.deb

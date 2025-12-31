@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [unreleased]
 
+### 🐛 Bug Fixes
+
+- *(scripts)* Update grub only when at least one kernel is resigned - ([d902a04](https://git.0xmax42.io/SimDev/scboot/commit/d902a0464f5b513498306625d1da6a43e4317057))
+
 ### 📚 Documentation
 
 - Add project overview and usage to README - ([4f95f48](https://git.0xmax42.io/SimDev/scboot/commit/4f95f480d93872eb429a366225e8ebc50a2c01e6))

@@ -139,17 +139,20 @@ uninstall:
 	rm -f "$(DESTDIR)$(DST_SCBOOT_CONF)"
 	rm -f "$(DESTDIR)$(DST_SCBOOT_DKMS_CONF)"
 	rm -f "$(DESTDIR)$(DST_SCBOOT_LIB)"
+	rm -f "$(DESTDIR)$(DST_SCBOOT_BIN)"
 	rm -f "$(DESTDIR)$(DST_SCBOOT_SYNC_DKMS)"
 	rm -f "$(DESTDIR)$(DST_SCBOOT_SIGN_GRUB)"
 	rm -f "$(DESTDIR)$(DST_SCBOOT_SIGN_KERNEL)"
 	rm -f "$(DESTDIR)$(DST_SYSTEMD_SERVICE)"
 	rm -f "$(DESTDIR)$(DST_SYSTEMD_PATH)"
+	rm -f "$(DESTDIR)$(DST_VERSION_FILE)"
 
 	# Remove symlinks
 	rm -f "$(DESTDIR)$(SYM_SCBOOT_SIGN_GRUB)"
 	rm -f "$(DESTDIR)$(SYM_SCBOOT_SIGN_KERNEL)"
+	rm -f "$(DESTDIR)$(SYM_SCBOOT_BIN)"
 
 	# Try to remove directories if they became empty
 	-rmdir --ignore-fail-on-non-empty "$(DESTDIR)$(SCBOOT_CONFDIR)" 2>/dev/null || true
-	-rmdir --ignore-fail-on-non-empty "$(DESTDIR)$(APT_CONFDIR)" 2>/dev/null || true
 	-rmdir --ignore-fail-on-non-empty "$(DESTDIR)$(SCBOOT_LIBDIR)" 2>/dev/null || true
+	-rmdir --ignore-fail-on-non-empty "$(DESTDIR)$(DKMS_CONFDIR)" 2>/dev/null || true

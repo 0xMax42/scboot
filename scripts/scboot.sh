@@ -21,16 +21,17 @@ usage_error() {
 
 run_sign_command() {
     local target="${1:-}"
+    export SCBOOT_INFO_ON_CONSOLE="true"
     case "${target}" in
     all)
-        SCBOOT_INFO_ON_CONSOLE="true" "${SIGN_GRUB}"
-        SCBOOT_INFO_ON_CONSOLE="true" "${SIGN_KERNEL}"
+        "${SIGN_GRUB}"
+        "${SIGN_KERNEL}"
         ;;
     grub)
-        SCBOOT_INFO_ON_CONSOLE="true" "${SIGN_GRUB}"
+        "${SIGN_GRUB}"
         ;;
     kernel)
-        SCBOOT_INFO_ON_CONSOLE="true" "${SIGN_KERNEL}"
+        "${SIGN_KERNEL}"
         ;;
     *)
         usage_error "Usage: scboot sign {all|grub|kernel}"

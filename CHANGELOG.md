@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [unreleased]
+
+### 🚀 Features
+
+- *(scripts)* Add force flag handling to scboot CLI - ([8b7d0dc](https://git.0xmax42.io/SimDev/scboot/commit/8b7d0dc48eba793d56ac880446c3e1e34dccbd34))
+- *(scripts)* Add SCBOOT_FORCE_SIGN override for resign checks - ([bd64342](https://git.0xmax42.io/SimDev/scboot/commit/bd64342ad969647a88cad7cf30d989bd325620e7))
+
+### 🐛 Bug Fixes
+
+- *(scripts)* Always enable console info for sign commands - ([bb2a805](https://git.0xmax42.io/SimDev/scboot/commit/bb2a8052f1dd199b1596cf519e6faca2224d5598))
+
 ## [1.0.0-pre.3](https://git.0xmax42.io/SimDev/scboot/compare/v1.0.0-pre.2..v1.0.0-pre.3) (pre-release) - 2025-12-31
 
 ### 🚀 Features

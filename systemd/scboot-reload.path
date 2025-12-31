@@ -1,0 +1,9 @@
+[Unit]
+Description=Watch scboot configuration file
+
+[Path]
+PathChanged=@DST_SCBOOT_CONF@
+PathModified=@DST_SCBOOT_CONF@
+
+[Install]
+WantedBy=multi-user.target

@@ -1,0 +1,6 @@
+[Unit]
+Description=React to scboot configuration change
+
+[Service]
+Type=oneshot
+ExecStart=@DST_SCBOOT_SYNC_DKMS@

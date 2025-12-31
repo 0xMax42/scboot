@@ -19,8 +19,10 @@ jobs:
         run: |
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             echo "ref=${{ github.event.inputs.tag }}" >> "$GITHUB_OUTPUT"
+            ref="${{ github.event.inputs.tag }}"
           else
             echo "ref=${{ github.event.release.tag_name }}" >> "$GITHUB_OUTPUT"
+            ref="${{ github.event.release.tag_name }}"
           fi
           echo "Determined ref: ${{ steps.ref.outputs.ref }}"
 
@@ -43,4 +45,4 @@ jobs:
           GITEA_BASE_URL: https://git.0xmax42.io
           GITEA_TOKEN: ${{ secrets.RELEASE_PUBLISH_TOKEN }}
         run: |
-          tea-pkg publish-deb debrepo ./dist/*.deb
+          tea-pkg publish-deb debrepo ./dist/*.deb -o

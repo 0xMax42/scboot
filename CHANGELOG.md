@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [unreleased]
+
+### ⚙️ Miscellaneous Tasks
+
+- Add project license file - ([8385fc7](https://git.0xmax42.io/SimDev/scboot/commit/8385fc73a93471195fa8b9dcc2ac3dd440bd9d5e))
+
 ## [1.0.0-pre.4](https://git.0xmax42.io/SimDev/scboot/compare/v1.0.0-pre.3..v1.0.0-pre.4) (pre-release) - 2025-12-31
 
 ### 🚀 Features

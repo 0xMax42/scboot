@@ -4,6 +4,11 @@ All notable changes to this project will be documented in this file.
 
 ## [unreleased]
 
+### 🚀 Features
+
+- *(scripts)* Add sign command to scboot cli - ([133fd95](https://git.0xmax42.io/SimDev/scboot/commit/133fd9570611dba043917795b7c6fd3e2a65cb83))
+- *(scripts)* Add optional console output for info logs - ([e70a924](https://git.0xmax42.io/SimDev/scboot/commit/e70a9241528732b9ffd4624ba53973cb6b8caddf))
+
 ### 🐛 Bug Fixes
 
 - *(scripts)* Support resigning all kernels and improve cleanup - ([bf4a66d](https://git.0xmax42.io/SimDev/scboot/commit/bf4a66d042b2011c28cde6d76fcdd4d86def38af))

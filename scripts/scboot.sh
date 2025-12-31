@@ -66,6 +66,7 @@ print_version() {
 # Options:
 #   -h, --help             Show this help message and exit
 #   -v, --version          Show scboot version and exit
+#   -f, --force            Force re-signing even if artifacts are unchanged
 #
 # Commands:
 #   sign all               Sign GRUB and all kernels
@@ -80,15 +81,34 @@ print_version() {
 #   Functional subcommands will be added incrementally.
 #=== HELP END ===
 
+while (($# > 0)); do
+    case "$1" in
+    -h | --help)
+        show_help
+        exit 0
+        ;;
+    -v | --version)
+        print_version
+        exit 0
+        ;;
+    -f | --force)
+        export SCBOOT_FORCE_SIGN=1
+        shift
+        ;;
+    --)
+        shift
+        break
+        ;;
+    -*)
+        usage_error "Unknown option: $1"
+        ;;
+    *)
+        break
+        ;;
+    esac
+done
+
 case "${1:-}" in
--h | --help)
-    show_help
-    exit 0
-    ;;
--v | --version)
-    print_version
-    exit 0
-    ;;
 sign)
     shift
     run_sign_command "${1:-}"

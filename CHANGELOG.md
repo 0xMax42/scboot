@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [unreleased]
+
+### ⚙️ Miscellaneous Tasks
+
+- *(workflows)* Fix ref variable when determining build tag - ([1c9403e](https://git.0xmax42.io/SimDev/scboot/commit/1c9403eaf0bc9e37a07b4c2860f3a626c68593e4))
+
 ## [1.0.0-pre.0](https://git.0xmax42.io/SimDev/scboot/compare/v0.5.4..v1.0.0-pre.0) (pre-release) - 2025-12-31
 
 ### 🚀 Features

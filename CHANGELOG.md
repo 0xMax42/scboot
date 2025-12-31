@@ -34,6 +34,7 @@ All notable changes to this project will be documented in this file.
 
 ### ⚙️ Miscellaneous Tasks
 
+- *(workflows)* Support manual build dispatch with tag input - ([16cdbbf](https://git.0xmax42.io/SimDev/scboot/commit/16cdbbfe221e80a6817f51ef06d45f09e73df364))
 - *(debian)* Mark scboot package as architecture independent - ([5133e1f](https://git.0xmax42.io/SimDev/scboot/commit/5133e1f2e11be8124eac9ca904812792a25b44de))
 - Add makefile for build and install workflow - ([a8d022e](https://git.0xmax42.io/SimDev/scboot/commit/a8d022e401ac7679bd065cf197c4a265689fce95))
 - Add debcrafter manifest for debian stable image - ([f3e109f](https://git.0xmax42.io/SimDev/scboot/commit/f3e109fa73314a9dc3c89dcbe4b259c2c823dda3))

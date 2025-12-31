@@ -8,6 +8,7 @@ set -euo pipefail
 
 SCBOOT_LOG_TAG="scboot"
 CONFIG_FILE="@DST_SCBOOT_CONF@"
+INFO_ON_CONSOLE=${SCBOOT_INFO_ON_CONSOLE:-false}
 
 # ------------------------------------------------------------
 # Logging helpers (systemd journal)
@@ -35,6 +36,9 @@ fi
 log_info() {
   # Log only to journal
   _scboot_log <<<"$*"
+  if [[ "${INFO_ON_CONSOLE}" == "true" ]]; then
+    echo "[scboot] $*"
+  fi
 }
 
 log_error() {

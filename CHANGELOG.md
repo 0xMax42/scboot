@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [unreleased]
 
+### 📚 Documentation
+
+- Add project overview and usage to README - ([4f95f48](https://git.0xmax42.io/SimDev/scboot/commit/4f95f480d93872eb429a366225e8ebc50a2c01e6))
+
 ### ⚙️ Miscellaneous Tasks
 
 - Add project license file - ([8385fc7](https://git.0xmax42.io/SimDev/scboot/commit/8385fc73a93471195fa8b9dcc2ac3dd440bd9d5e))

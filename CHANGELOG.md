@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file.
 
 ### 🐛 Bug Fixes
 
+- *(scripts)* Export scboot info flag once at script startup - ([1b59fcf](https://git.0xmax42.io/SimDev/scboot/commit/1b59fcf1822b0cbde9449f92433a717e078a2e9b))
 - *(scripts)* Update grub only when at least one kernel is resigned - ([d902a04](https://git.0xmax42.io/SimDev/scboot/commit/d902a0464f5b513498306625d1da6a43e4317057))
 
 ### 📚 Documentation

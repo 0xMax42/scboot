@@ -9,7 +9,7 @@ Vcs-Git: https://git.0xmax42.io/SimDev/scboot.git
 Vcs-Browser: https://git.0xmax42.io/SimDev/scboot
 
 Package: scboot
-Architecture: amd64
+Architecture: all
 Depends: ${misc:Depends}, 
  bash, 
  coreutils, 

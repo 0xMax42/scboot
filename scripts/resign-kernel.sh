@@ -1,67 +1,83 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-SCRIPT_DIR="$(cd -- "$(dirname -- "$(readlink -f -- "$0")")" &> /dev/null && pwd)"
-source "$SCRIPT_DIR/load_config.sh"
+SCRIPT_PATH="$(readlink -f -- "$0")"
+SCRIPT_DIR="$(dirname -- "${SCRIPT_PATH}")"
+# shellcheck source-path=./scripts
+source "${SCRIPT_DIR}/lib.sh"
 
-mkdir -p "$KERNEL_HASH_DIR"
+if (($# != 1)); then
+    log_error "Usage: resign-kernel.sh <kernel-image>"
+    exit 1
+fi
 
-SRC="$1"
-BASENAME=$(basename "$SRC")
-HASHFILE="$KERNEL_HASH_DIR/${BASENAME}.sha256"
+SRC="${1}"
+[[ -f "${SRC}" ]] || {
+    log_info "Kernel ${SRC} missing, skipping."
+    exit 0
+}
 
-# 1. Datei muss existieren
-[[ -f "$SRC" ]] || exit 0
+mkdir -p "${KERNEL_HASH_DIR}"
 
-# 2. Aktuellen Hash des (signierten oder unsignierten) Kernels berechnen
-CUR_HASH=$(sha256sum "$SRC" | awk '{print $1}')
+BASENAME="$(basename -- "${SRC}")"
+HASHFILE="${KERNEL_HASH_DIR}/${BASENAME}.sha256"
 
-# 3. Gespeicherten Hash laden (falls vorhanden)
+CUR_HASH=$(sha256sum "${SRC}" | awk '{print $1}')
 STORED_HASH=""
-[[ -f "$HASHFILE" ]] && STORED_HASH=$(awk '{print $1}' "$HASHFILE")
+[[ -f "${HASHFILE}" ]] && STORED_HASH="$(awk '{print $1}' "${HASHFILE}")"
 
-# 4. Prüfen, ob bereits korrekt signiert *und* unverändert
-if [[ "$CUR_HASH" == "$STORED_HASH" ]] \
-   && sbverify --cert "$CRT" "$SRC" &>/dev/null; then
-    echo "[SecureBoot] Kernel $BASENAME bereits korrekt signiert – übersprungen."
+if [[ "${CUR_HASH}" == "${STORED_HASH}" ]] &&
+    sbverify --cert "${CRT}" "${SRC}" >/dev/null 2>&1; then
+    log_info "Kernel ${BASENAME} already signed, skipping."
     exit 0
 fi
 
-echo "[SecureBoot] Signiere Kernel: $BASENAME"
+log_info "Signing kernel ${BASENAME}"
 
-# 5. Temporäre Arbeitskopie anlegen
-TMP=$(mktemp --suffix=.efi)
-cp "$SRC" "$TMP"
+TMP_FILE=""
+TMP_SIGNED_FILE=""
 
-# 5a. Alte Signatur aus der Kopie entfernen (falls vorhanden)
-sbattach --remove "$TMP" 2>/dev/null || true
+cleanup() {
+    local exit_code="$1"
+    trap - EXIT INT TERM
+    [[ -n "${TMP_FILE:-}" ]] && rm -f -- "${TMP_FILE}"
+    [[ -n "${TMP_SIGNED_FILE:-}" ]] && rm -f -- "${TMP_SIGNED_FILE}"
+    if [[ "${exit_code}" -ne 0 ]]; then
+        log_error "Signing kernel ${BASENAME} failed."
+    fi
+    exit "${exit_code}"
+}
 
-# 6. Signieren → Ergebnis in zweite Temp-Datei
-SIGNED_TMP=$(mktemp --suffix=.efi)
-sbsign --key "$KEY" --cert "$CRT" --output "$SIGNED_TMP" "$TMP"
-rm -f "$TMP"
+trap 'cleanup "$?"' EXIT INT TERM
 
-# 7. Atomar ersetzen (mv ist auf demselben FS atomar)
-mv "$SIGNED_TMP" "$SRC"
+TARGET_DIR="$(dirname -- "${SRC}")"
+TMP_FILE="$(mktemp --tmpdir="${TARGET_DIR}" --suffix=.efi scboot.XXXXXX)"
+cp "${SRC}" "${TMP_FILE}"
+sbattach --remove "${TMP_FILE}" >/dev/null 2>&1 || true
 
-# 8. Initrd: unverändert übernehmen (kein .signed Suffix mehr)
+TMP_SIGNED_FILE="$(mktemp --tmpdir="${TARGET_DIR}" --suffix=.efi scboot.XXXXXX)"
+sbsign --key "${KEY}" --cert "${CRT}" --output "${TMP_SIGNED_FILE}" "${TMP_FILE}"
+rm -f -- "${TMP_FILE}"
+TMP_FILE=""
+
+mv "${TMP_SIGNED_FILE}" "${SRC}"
+TMP_SIGNED_FILE=""
+
 KERNEL_VER="${BASENAME#vmlinuz-}"
-INITRD_SRC="$KERNEL_DST_DIR/initrd.img-$KERNEL_VER"
+INITRD_SRC="${KERNEL_DST_DIR}/initrd.img-${KERNEL_VER}"
 
-if [[ -f "$INITRD_SRC" ]]; then
-    echo "[SecureBoot] Initrd bleibt unverändert: $INITRD_SRC"
+if [[ -f "${INITRD_SRC}" ]]; then
+    log_info "Initrd remains unchanged: ${INITRD_SRC}"
 else
-    echo "[SecureBoot] WARNUNG: Kein passendes initrd.img-$KERNEL_VER gefunden." >&2
+    log_error "No matching initrd.img-${KERNEL_VER} found."
 fi
 
-# 9. Neuen Hash des *signierten* Kernels berechnen & speichern
-NEW_HASH=$(sha256sum "$SRC" | awk '{print $1}')
-echo "$NEW_HASH  $SRC" > "$HASHFILE"
+NEW_HASH=$(sha256sum "${SRC}" | awk '{print $1}')
+echo "${NEW_HASH}  ${SRC}" >"${HASHFILE}"
 
-# 10. GRUB updaten, falls vorhanden
-if command -v update-grub &>/dev/null; then
-    echo "[SecureBoot] Aktualisiere GRUB-Konfiguration …"
+if command -v update-grub >/dev/null 2>&1; then
+    log_info "Updating GRUB configuration..."
     update-grub
 fi
 
-echo "[SecureBoot] Fertig: $SRC (signiert)"
+log_info "Done: ${SRC} (signed)"

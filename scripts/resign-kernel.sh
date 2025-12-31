@@ -6,6 +6,8 @@ SCRIPT_DIR="$(dirname -- "${SCRIPT_PATH}")"
 # shellcheck source-path=./scripts
 source "${SCRIPT_DIR}/lib.sh"
 
+SCBOOT_KERNEL_SIGNED_ANY=0
+
 sign_kernel() {
     local SRC="${1:-}"
 
@@ -94,14 +96,14 @@ sign_kernel() {
         NEW_HASH="$(sha256sum "${SRC}" | awk '{print $1}')"
         echo "${NEW_HASH}  ${SRC}" >"${HASHFILE}"
 
-        if command -v update-grub >/dev/null 2>&1; then
-            log_info "Updating GRUB configuration..."
-            update-grub
-        fi
-
         log_info "Done: ${SRC} (signed)"
         cleanup 0
     )
+    local sign_rc=$?
+    if ((sign_rc == 0)); then
+        SCBOOT_KERNEL_SIGNED_ANY=1
+    fi
+    return "${sign_rc}"
 }
 
 sign_all_kernels() {
@@ -138,11 +140,22 @@ sign_all_kernels() {
     return "${rc}"
 }
 
+main_rc=0
+
 if (($# == 0)); then
-    sign_all_kernels
+    sign_all_kernels || main_rc=$?
 elif (($# == 1)); then
-    sign_kernel "$1"
+    sign_kernel "$1" || main_rc=$?
 else
     log_error "Usage: resign-kernel.sh [kernel-image]"
     exit 1
 fi
+
+if [[ "${SCBOOT_KERNEL_SIGNED_ANY}" == "1" ]]; then
+    if command -v update-grub >/dev/null 2>&1; then
+        log_info "Updating GRUB configuration..."
+        update-grub
+    fi
+fi
+
+exit "${main_rc}"

@@ -86,11 +86,10 @@ build: clean
 	@mkdir -p "$(BUILD_DIR)"
 
 	@for dir in hooks systemd scripts config; do \
-		mkdir -p "$(BUILD_DIR)/$$dir"; \
-		for file in $$dir/*; do \
-			[ -f "$$file" ] || continue; \
-			sed $(SED_VARS) "$$file" \
-				> "$(BUILD_DIR)/$$dir/$$(basename "$$file")"; \
+		find "$$dir" -type f | while read -r file; do \
+			out="$(BUILD_DIR)/$$file"; \
+			mkdir -p "$$(dirname "$$out")"; \
+			sed $(SED_VARS) "$$file" > "$$out"; \
 		done; \
 	done
 

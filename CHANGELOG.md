@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [unreleased]
+
+### 🐛 Bug Fixes
+
+- *(scripts)* Show descriptive version string in scboot output - ([af49a07](https://git.0xmax42.io/SimDev/scboot/commit/af49a070b40b9edcfca28a44d5fb7ac47c882abb))
+
 ## [1.0.0-pre.1](https://git.0xmax42.io/SimDev/scboot/compare/v1.0.0-pre.0..v1.0.0-pre.1) (pre-release) - 2025-12-31
 
 ### 🐛 Bug Fixes

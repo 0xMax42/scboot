@@ -20,10 +20,15 @@ source "${SCRIPT_DIR}/lib.sh"
 }
 
 CUR_HASH=$(sha256sum "${GRUB_SRC}" | awk '{print $1}')
+force_sign="${SCBOOT_FORCE_SIGN:-}"
 
-if [[ -f "${GRUB_HASH}" ]] && grep -q "${CUR_HASH}" "${GRUB_HASH}"; then
-    log_info "GRUB binary unchanged, no resigning needed."
-    exit 0
+if [[ -z "${force_sign}" ]]; then
+    if [[ -f "${GRUB_HASH}" ]] && grep -q "${CUR_HASH}" "${GRUB_HASH}"; then
+        log_info "GRUB binary unchanged, no resigning needed."
+        exit 0
+    fi
+else
+    log_info "GRUB resign forced via SCBOOT_FORCE_SIGN."
 fi
 
 log_info "GRUB binary changed, resigning..."

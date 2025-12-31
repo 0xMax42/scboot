@@ -29,10 +29,15 @@ sign_kernel() {
     STORED_HASH=""
     [[ -f "${HASHFILE}" ]] && STORED_HASH="$(awk '{print $1}' "${HASHFILE}")"
 
-    if [[ "${CUR_HASH}" == "${STORED_HASH}" ]] &&
-        sbverify --cert "${CRT}" "${SRC}" >/dev/null 2>&1; then
-        log_info "Kernel ${BASENAME} already signed, skipping."
-        return 0
+    local force_sign="${SCBOOT_FORCE_SIGN:-}"
+    if [[ -z "${force_sign}" ]]; then
+        if [[ "${CUR_HASH}" == "${STORED_HASH}" ]] &&
+            sbverify --cert "${CRT}" "${SRC}" >/dev/null 2>&1; then
+            log_info "Kernel ${BASENAME} already signed, skipping."
+            return 0
+        fi
+    else
+        log_info "Kernel ${BASENAME} resign forced via SCBOOT_FORCE_SIGN."
     fi
 
     log_info "Signing kernel ${BASENAME}"

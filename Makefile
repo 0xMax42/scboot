@@ -48,10 +48,10 @@ DST_SYSTEMD_PATH := $(SYSTEMDDIR)/scboot-reload.path
 # Symlinks
 SYM_SCBOOT_SIGN_GRUB := $(LIBEXECDIR)/resign-grub
 SYM_SCBOOT_SIGN_KERNEL := $(LIBEXECDIR)/resign-kernel
-SYM_SCBOOT_BIN := $(LIBEXECDIR)/scboot
+SYM_SCBOOT_BIN := $(SBINDIR)/scboot
 REL_LIB_FROM_SBIN_GRUB := $(patsubst $(LIBEXECDIR)/%,%,$(SCBOOT_LIBDIR))/resign-grub.sh
 REL_LIB_FROM_SBIN_KERNEL := $(patsubst $(LIBEXECDIR)/%,%,$(SCBOOT_LIBDIR))/resign-kernel.sh
-REL_LIB_FROM_SBIN_BIN := $(patsubst $(LIBEXECDIR)/%,%,$(SCBOOT_LIBDIR))/scboot.sh
+REL_LIB_FROM_SBIN_BIN := $(patsubst $(SBINDIR)/%,%,$(SCBOOT_LIBDIR))/scboot.sh
 
 # Sed variables for templating
 SED_VARS = \

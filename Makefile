@@ -21,8 +21,8 @@ SCBOOT_LIBDIR := $(PREFIX)/lib/scboot
 SRC_VERSION_FILE := VERSION
 SRC_GRUB_HOOK   := $(BUILD_DIR)/hooks/apt-secureboot-grub-resign.apt-hook
 SRC_KERNEL_HOOK := $(BUILD_DIR)/hooks/apt-secureboot-kernel-resign.apt-hook
-SRC_SCBOOT_CONF := config/scboot.conf
-SRC_SCBOOT_DKMS_CONF := config/dkms-framework.conf.d/scboot.conf
+SRC_SCBOOT_CONF := $(BUILD_DIR)/config/scboot.conf
+SRC_SCBOOT_DKMS_CONF := $(BUILD_DIR)/config/dkms-framework.conf.d/scboot.conf
 SRC_SCBOOT_LIB  := $(BUILD_DIR)/scripts/lib.sh
 SRC_SCBOOT_BIN  := $(BUILD_DIR)/scripts/scboot.sh
 SRC_SCBOOT_SYNC_DKMS := $(BUILD_DIR)/scripts/sync-dkms.sh
@@ -85,9 +85,10 @@ test:
 build:
 	@mkdir -p "$(BUILD_DIR)"
 
-	@for dir in hooks systemd scripts; do \
+	@for dir in hooks systemd scripts config; do \
 		mkdir -p "$(BUILD_DIR)/$$dir"; \
 		for file in $$dir/*; do \
+			[ -f "$$file" ] || continue; \
 			sed $(SED_VARS) "$$file" \
 				> "$(BUILD_DIR)/$$dir/$$(basename "$$file")"; \
 		done; \

@@ -108,6 +108,7 @@ install: build
 	install -d "$(DESTDIR)$(LIBEXECDIR)"
 	install -d "$(DESTDIR)$(SYSTEMDDIR)"
 	install -d "$(DESTDIR)$(DKMS_CONFDIR)"
+	install -d "$(DESTDIR)$(SBINDIR)"
 
 	# Install files
 	install -m 0644 "$(SRC_GRUB_HOOK)"   "$(DESTDIR)$(DST_GRUB_HOOK)"
@@ -154,4 +155,3 @@ uninstall:
 	# Try to remove directories if they became empty
 	-rmdir --ignore-fail-on-non-empty "$(DESTDIR)$(SCBOOT_CONFDIR)" 2>/dev/null || true
 	-rmdir --ignore-fail-on-non-empty "$(DESTDIR)$(SCBOOT_LIBDIR)" 2>/dev/null || true
-	-rmdir --ignore-fail-on-non-empty "$(DESTDIR)$(DKMS_CONFDIR)" 2>/dev/null || true

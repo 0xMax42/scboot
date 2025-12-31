@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [unreleased]
+
+### ⚙️ Miscellaneous Tasks
+
+- *(debian)* Install license and readme in doc directory - ([b8112ec](https://git.0xmax42.io/SimDev/scboot/commit/b8112ecb481011ced8165e0d6cafcc02c2420215))
+
 ## [1.0.0-pre.5](https://git.0xmax42.io/SimDev/scboot/compare/v1.0.0-pre.4..v1.0.0-pre.5) (pre-release) - 2025-12-31
 
 ### 🐛 Bug Fixes

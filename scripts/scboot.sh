@@ -3,12 +3,11 @@ set -euo pipefail
 
 SCRIPT_PATH="$(readlink -f -- "$0")"
 SCRIPT_DIR="$(dirname -- "${SCRIPT_PATH}")"
-PROJECT_ROOT="$(dirname -- "${SCRIPT_DIR}")"
 
 # shellcheck source-path=./scripts
 source "${SCRIPT_DIR}/lib.sh"
 
-VERSION_FILE="${PROJECT_ROOT}/VERSION"
+VERSION_FILE="${SCRIPT_DIR}/VERSION"
 
 show_help() {
     sed -n '/^#=== HELP START ===/,/^#=== HELP END ===/ {

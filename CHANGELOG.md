@@ -12,6 +12,10 @@ All notable changes to this project will be documented in this file.
 
 - *(build)* Remove git-cliff installation script - ([52e831d](https://git.0xmax42.io/simdev/shim/commit/52e831d93ca607eec3346a266df409627d8d3d8e))
 
+### ⚙️ Miscellaneous Tasks
+
+- *(ci)* Restrict release workflow to main branch only - ([7c1b9ae](https://git.0xmax42.io/simdev/shim/commit/7c1b9aefe520dbbcb70f4cfb2b45e69b945201a6))
+
 ## [0.5.4](https://git.0xmax42.io/simdev/shim/compare/v0.5.3..v0.5.4) - 2025-06-27
 
 ### 🚜 Refactor

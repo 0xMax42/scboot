@@ -46,8 +46,8 @@ DST_SYSTEMD_SERVICE := $(SYSTEMDDIR)/scboot-reload.service
 DST_SYSTEMD_PATH := $(SYSTEMDDIR)/scboot-reload.path
 
 # Symlinks
-SYM_SCBOOT_SIGN_GRUB := $(LIBEXECDIR)/resign-grub
-SYM_SCBOOT_SIGN_KERNEL := $(LIBEXECDIR)/resign-kernel
+SYM_SCBOOT_SIGN_GRUB := $(LIBEXECDIR)/scboot-resign-grub
+SYM_SCBOOT_SIGN_KERNEL := $(LIBEXECDIR)/scboot-resign-kernel
 SYM_SCBOOT_BIN := $(SBINDIR)/scboot
 REL_LIB_FROM_SBIN_GRUB := $(patsubst $(LIBEXECDIR)/%,%,$(SCBOOT_LIBDIR))/resign-grub.sh
 REL_LIB_FROM_SBIN_KERNEL := $(patsubst $(LIBEXECDIR)/%,%,$(SCBOOT_LIBDIR))/resign-kernel.sh

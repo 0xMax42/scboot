@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file.
 
 ### 🐛 Bug Fixes
 
+- *(makefile)* Ensure sbin dir is created during install - ([36dbff4](https://git.0xmax42.io/SimDev/scboot/commit/36dbff43590a4931c1706b3f9e93ac0e4e3ef7fc))
 - *(makefile)* Install scboot binary into sbin instead of libexec - ([e8f9c65](https://git.0xmax42.io/SimDev/scboot/commit/e8f9c65b5caa6f153a4e04b8b0795d64ed8b4066))
 
 ### ⚙️ Miscellaneous Tasks

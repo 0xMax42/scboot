@@ -3,15 +3,30 @@ name: Upload Assets
 on:
   release:
     types: [published]
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: Tag to build from
+        required: true
 
 jobs:
   upload-deb-package:
     runs-on: ubuntu-latest
 
     steps:
+      - name: Determine ref
+        id: ref
+        run: |
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            echo "ref=${{ github.event.inputs.tag }}" >> "$GITHUB_OUTPUT"
+          else
+            echo "ref=${{ github.event.release.tag_name }}" >> "$GITHUB_OUTPUT"
+          fi
+          echo "Determined ref: ${{ steps.ref.outputs.ref }}"
+
       - uses: actions/checkout@v4
         with:
-          ref: ${{ github.event.release.tag_name }}
+          ref: ${{ steps.ref.outputs.ref }}
           fetch-depth: 0
 
       - name: Install dependencies
@@ -28,5 +43,4 @@ jobs:
           GITEA_BASE_URL: https://git.0xmax42.io
           GITEA_TOKEN: ${{ secrets.RELEASE_PUBLISH_TOKEN }}
         run: |
-
           tea-pkg publish-deb debrepo ./dist/*.deb

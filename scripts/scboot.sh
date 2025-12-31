@@ -1,6 +1,8 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
+export SCBOOT_INFO_ON_CONSOLE="true"
+
 SIGN_KERNEL="@SYM_SCBOOT_SIGN_KERNEL@"
 SIGN_GRUB="@SYM_SCBOOT_SIGN_GRUB@"
 
@@ -21,7 +23,6 @@ usage_error() {
 
 run_sign_command() {
     local target="${1:-}"
-    export SCBOOT_INFO_ON_CONSOLE="true"
     case "${target}" in
     all)
         "${SIGN_GRUB}"

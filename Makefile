@@ -95,7 +95,6 @@ build:
 
 clean:
 	@rm -rf "$(BUILD_DIR)"
-	@echo "Cleaned build directory."
 
 # ----------------------------
 # Installation

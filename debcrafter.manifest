@@ -1,0 +1,4 @@
+---
+debcrafter:
+  image: "debian:stable"
+---

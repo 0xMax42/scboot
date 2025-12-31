@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file.
 
+## [unreleased]
+
+### 🐛 Bug Fixes
+
+- *(scripts)* Support resigning all kernels and improve cleanup - ([bf4a66d](https://git.0xmax42.io/SimDev/scboot/commit/bf4a66d042b2011c28cde6d76fcdd4d86def38af))
+- *(makefile)* Correct symlink names for resign scripts - ([e35542f](https://git.0xmax42.io/SimDev/scboot/commit/e35542fc370fe1ad7f5fc51b2839ab14bde16c89))
+
 ## [1.0.0-pre.2](https://git.0xmax42.io/SimDev/scboot/compare/v1.0.0-pre.1..v1.0.0-pre.2) (pre-release) - 2025-12-31
 
 ### 🐛 Bug Fixes

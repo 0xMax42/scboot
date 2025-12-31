@@ -23,7 +23,8 @@ print_version() {
         log_error "VERSION file not found: ${VERSION_FILE}"
         exit 1
     fi
-    cat "${VERSION_FILE}"
+    version=$(<"${VERSION_FILE}")
+    echo "scboot version ${version}"
 }
 
 #=== HELP START ===

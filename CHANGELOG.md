@@ -4,6 +4,10 @@ All notable changes to this project will be documented in this file.
 
 ## [unreleased]
 
+### 🐛 Bug Fixes
+
+- *(makefile)* Install scboot binary into sbin instead of libexec - ([e8f9c65](https://git.0xmax42.io/SimDev/scboot/commit/e8f9c65b5caa6f153a4e04b8b0795d64ed8b4066))
+
 ### ⚙️ Miscellaneous Tasks
 
 - *(workflows)* Fix ref variable when determining build tag - ([1c9403e](https://git.0xmax42.io/SimDev/scboot/commit/1c9403eaf0bc9e37a07b4c2860f3a626c68593e4))

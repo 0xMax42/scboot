@@ -4,10 +4,22 @@ Priority: optional
 Maintainer: 0xMax42 <Mail@0xMax42.io>
 Standards-Version: 4.6.2
 Build-Depends: debhelper-compat (= 13)
+Homepage: https://git.0xmax42.io/SimDev/scboot
+Vcs-Git: https://git.0xmax42.io/SimDev/scboot.git
+Vcs-Browser: https://git.0xmax42.io/SimDev/scboot
 
 Package: scboot
 Architecture: amd64
-Depends: ${misc:Depends}, bash, coreutils, grep, sed, mawk | gawk, findutils, sbsigntool, grub-common, shim-scboot
+Depends: ${misc:Depends}, 
+ bash, 
+ coreutils, 
+ grep, 
+ sed, 
+ mawk | gawk, 
+ findutils, 
+ sbsigntool, 
+ grub-common, 
+ shim-scboot
 Description: Secure Boot Tools for GRUB and Kernel resigning
   This package installs scripts and config for automatically resigning
   GRUB and kernel after updates.

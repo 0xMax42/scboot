@@ -73,10 +73,11 @@ sign_kernel() {
         TARGET_DIR="$(dirname -- "${SRC}")"
         TMP_FILE="$(mktemp --tmpdir="${TARGET_DIR}" --suffix=.efi scboot.XXXXXX)"
         cp "${SRC}" "${TMP_FILE}"
-        sbattach --remove "${TMP_FILE}" >/dev/null 2>&1 || true
+        scboot_run_command "sbattach ${BASENAME}" sbattach --remove "${TMP_FILE}" || true
 
         TMP_SIGNED_FILE="$(mktemp --tmpdir="${TARGET_DIR}" --suffix=.efi scboot.XXXXXX)"
-        sbsign --key "${KEY}" --cert "${CRT}" --output "${TMP_SIGNED_FILE}" "${TMP_FILE}"
+        scboot_run_command "sbsign ${BASENAME}" \
+            sbsign --key "${KEY}" --cert "${CRT}" --output "${TMP_SIGNED_FILE}" "${TMP_FILE}"
         rm -f -- "${TMP_FILE}"
         TMP_FILE=""
 
@@ -156,6 +157,7 @@ fi
 if [[ "${SCBOOT_KERNEL_SIGNED_ANY}" == "1" ]]; then
     if command -v update-grub >/dev/null 2>&1; then
         log_info "Updating GRUB configuration..."
+        scboot_run_command "update-grub" update-grub
         log_success "GRUB configuration updated."
     fi
 fi

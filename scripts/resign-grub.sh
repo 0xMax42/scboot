@@ -55,10 +55,11 @@ TMP_SIGNED_FILE="${TMP_FILE}.signed"
 
 # Remove old signatures from original
 cp "${GRUB_SRC}" "${TMP_FILE}"
-sbattach --remove "${TMP_FILE}" 2>/dev/null || true
+scboot_run_command "sbattach grub" sbattach --remove "${TMP_FILE}" || true
 
 # Resign
-sbsign --key "${KEY}" --cert "${CRT}" --output "${TMP_SIGNED_FILE}" "${TMP_FILE}"
+scboot_run_command "sbsign grub" \
+    sbsign --key "${KEY}" --cert "${CRT}" --output "${TMP_SIGNED_FILE}" "${TMP_FILE}"
 mv "${TMP_SIGNED_FILE}" "${GRUB_DST}"
 TMP_SIGNED_FILE=""
 rm -f "${TMP_FILE}"

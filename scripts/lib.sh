@@ -56,6 +56,68 @@ log_error() {
 }
 
 # ------------------------------------------------------------
+# External command helpers
+# ------------------------------------------------------------
+
+_scboot_log_pipe() {
+  local level="$1"
+  local prefix="$2"
+  local line=""
+  while IFS= read -r line || [[ -n "${line}" ]]; do
+    case "${level}" in
+    info)
+      log_info "${prefix}${line}"
+      ;;
+    error)
+      log_error "${prefix}${line}"
+      ;;
+    success)
+      log_success "${prefix}${line}"
+      ;;
+    *)
+      _scboot_log <<<"${prefix}${line}"
+      ;;
+    esac
+  done
+}
+
+scboot_run_command() {
+  local label="${1:-}"
+  shift || true
+  if (($# == 0)); then
+    log_error "scboot_run_command requires a command to execute"
+    return 1
+  fi
+
+  local -a cmd=("$@")
+  local info_prefix=""
+  local error_prefix=""
+  if [[ -n "${label}" ]]; then
+    info_prefix="${label}: "
+    error_prefix="${label}: "
+    log_info "Running ${label} (${cmd[*]})"
+  else
+    log_info "Running command (${cmd[*]})"
+  fi
+
+  local status=0
+  (
+    set +e
+    "${cmd[@]}" \
+      > >(_scboot_log_pipe info "${info_prefix}") \
+      2> >(_scboot_log_pipe error "${error_prefix}")
+  )
+  status=$?
+
+  if ((status == 0)); then
+    return 0
+  fi
+
+  log_error "Command ${label:-${cmd[0]}} failed with status ${status}"
+  return "${status}"
+}
+
+# ------------------------------------------------------------
 # Configuration loading
 # ------------------------------------------------------------
 

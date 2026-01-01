@@ -2,7 +2,7 @@
 
 All notable changes to this project will be documented in this file.
 
-## [unreleased]
+## [1.0.0-pre.7](https://git.0xmax42.io/SimDev/scboot/compare/v1.0.0-pre.6..v1.0.0-pre.7) (pre-release) - 2026-01-01
 
 ### 🚀 Features
 

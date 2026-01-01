@@ -101,11 +101,11 @@ scboot_run_command() {
   fi
 
   local status=0
-  (
+  ( # quirk: Logging stdout and stderr both as info
     set +e
     "${cmd[@]}" \
       > >(_scboot_log_pipe info "${info_prefix}") \
-      2> >(_scboot_log_pipe error "${error_prefix}")
+      2> >(_scboot_log_pipe info "${error_prefix}")
   )
   status=$?
 

@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [unreleased]
+
+### 🐛 Bug Fixes
+
+- *(scripts)* Log stderr as info in scboot_run_command - ([c66c0b8](https://git.0xmax42.io/SimDev/scboot/commit/c66c0b8bb00e783f24ad096e30d74775dba2ca54))
+
 ## [1.0.0-pre.7](https://git.0xmax42.io/SimDev/scboot/compare/v1.0.0-pre.6..v1.0.0-pre.7) (pre-release) - 2026-01-01
 
 ### 🚀 Features

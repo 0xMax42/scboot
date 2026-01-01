@@ -4,8 +4,13 @@ All notable changes to this project will be documented in this file.
 
 ## [unreleased]
 
+### 🚀 Features
+
+- *(scripts)* Add success logging to signing scripts - ([ec1d941](https://git.0xmax42.io/SimDev/scboot/commit/ec1d9410a07b65eb57a1ae5ea4d29e9067980916))
+
 ### 🚜 Refactor
 
+- *(scripts)* Add helper to run external commands with logging - ([0d4979c](https://git.0xmax42.io/SimDev/scboot/commit/0d4979cbaf2f074b9e1f4974fc8bd8bd7820758a))
 - *(scripts)* Extract shared config loading helper - ([1aef8c9](https://git.0xmax42.io/SimDev/scboot/commit/1aef8c934970a7a36ee349100989c9fe915cba5c))
 
 ## [1.0.0-pre.6](https://git.0xmax42.io/SimDev/scboot/compare/v1.0.0-pre.5..v1.0.0-pre.6) (pre-release) - 2025-12-31

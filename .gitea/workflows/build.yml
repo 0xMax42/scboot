@@ -31,3 +31,15 @@ jobs:
           tea-pkg publish-deb debrepo ./dist/*.deb -o
 
           tea-pkg release-asset simdev/scboot ${{ github.event.release.tag_name }} ./dist/*.deb
+
+      - name: Run Releases Sync Action
+        uses: https://git.0xmax42.io/actions/releases-sync@main
+        with:
+          gitea_token: ${{ secrets.RELEASE_PUBLISH_TOKEN }}
+          gitea_url: https://git.0xmax42.io
+          gitea_owner: simdev
+          gitea_repo: scboot
+          tag_name: ${{ github.event.release.tag_name }}
+          github_token: ${{ secrets.SYNC_GITHUB_TOKEN }}
+          github_owner: 0xmax42
+          github_repo: scboot

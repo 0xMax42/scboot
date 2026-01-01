@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [unreleased]
+
+### 🚜 Refactor
+
+- *(scripts)* Extract shared config loading helper - ([1aef8c9](https://git.0xmax42.io/SimDev/scboot/commit/1aef8c934970a7a36ee349100989c9fe915cba5c))
+
 ## [1.0.0-pre.6](https://git.0xmax42.io/SimDev/scboot/compare/v1.0.0-pre.5..v1.0.0-pre.6) (pre-release) - 2025-12-31
 
 ### ⚙️ Miscellaneous Tasks

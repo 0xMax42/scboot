@@ -2,6 +2,74 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.0.0](https://git.0xmax42.io/SimDev/scboot/compare/v1.0.0-pre.8..v1.0.0) - 2026-01-01
+
+### 🚀 Features
+
+- *(scripts)* Add success logging to signing scripts - (from [v1.0.0-pre.7](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.7)) - ([ec1d941](https://git.0xmax42.io/SimDev/scboot/commit/ec1d9410a07b65eb57a1ae5ea4d29e9067980916))
+- *(scripts)* Add force flag handling to scboot CLI - (from [v1.0.0-pre.4](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.4)) - ([8b7d0dc](https://git.0xmax42.io/SimDev/scboot/commit/8b7d0dc48eba793d56ac880446c3e1e34dccbd34))
+- *(scripts)* Add SCBOOT_FORCE_SIGN override for resign checks - (from [v1.0.0-pre.4](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.4)) - ([bd64342](https://git.0xmax42.io/SimDev/scboot/commit/bd64342ad969647a88cad7cf30d989bd325620e7))
+- *(scripts)* Add sign command to scboot cli - (from [v1.0.0-pre.3](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.3)) - ([133fd95](https://git.0xmax42.io/SimDev/scboot/commit/133fd9570611dba043917795b7c6fd3e2a65cb83))
+- *(scripts)* Add optional console output for info logs - (from [v1.0.0-pre.3](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.3)) - ([e70a924](https://git.0xmax42.io/SimDev/scboot/commit/e70a9241528732b9ffd4624ba53973cb6b8caddf))
+- *(scripts)* Add scboot CLI and improve signing workflows - (from [v1.0.0-pre.0](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.0)) - ([a6d4c7e](https://git.0xmax42.io/SimDev/scboot/commit/a6d4c7e6d19493973c5ee4c157c9c8d024b5d305))
+- *(config)* Add dkms signing configuration and english comments - (from [v1.0.0-pre.0](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.0)) - ([409bce0](https://git.0xmax42.io/SimDev/scboot/commit/409bce0fc3d5030c1bc4ded92e18e8799616b438))
+- *(systemd)* Add scboot reload units for config changes - (from [v1.0.0-pre.0](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.0)) - ([c5bedb4](https://git.0xmax42.io/SimDev/scboot/commit/c5bedb4babc5666a42e1d6df27ec7b028291eeba))
+- *(hooks)* Update apt hooks to use new resign helpers - (from [v1.0.0-pre.0](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.0)) - ([276dca5](https://git.0xmax42.io/SimDev/scboot/commit/276dca50db39f44603593d6db277a2f58c624630))
+
+### 🐛 Bug Fixes
+
+- *(scripts)* Log stderr as info in scboot_run_command - (from [v1.0.0-pre.8](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.8)) - ([c66c0b8](https://git.0xmax42.io/SimDev/scboot/commit/c66c0b8bb00e783f24ad096e30d74775dba2ca54))
+- *(scripts)* Export scboot info flag once at script startup - (from [v1.0.0-pre.5](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.5)) - ([1b59fcf](https://git.0xmax42.io/SimDev/scboot/commit/1b59fcf1822b0cbde9449f92433a717e078a2e9b))
+- *(scripts)* Update grub only when at least one kernel is resigned - (from [v1.0.0-pre.5](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.5)) - ([d902a04](https://git.0xmax42.io/SimDev/scboot/commit/d902a0464f5b513498306625d1da6a43e4317057))
+- *(scripts)* Always enable console info for sign commands - (from [v1.0.0-pre.4](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.4)) - ([bb2a805](https://git.0xmax42.io/SimDev/scboot/commit/bb2a8052f1dd199b1596cf519e6faca2224d5598))
+- *(scripts)* Support resigning all kernels and improve cleanup - (from [v1.0.0-pre.3](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.3)) - ([bf4a66d](https://git.0xmax42.io/SimDev/scboot/commit/bf4a66d042b2011c28cde6d76fcdd4d86def38af))
+- *(makefile)* Correct symlink names for resign scripts - (from [v1.0.0-pre.3](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.3)) - ([e35542f](https://git.0xmax42.io/SimDev/scboot/commit/e35542fc370fe1ad7f5fc51b2839ab14bde16c89))
+- *(scripts)* Show descriptive version string in scboot output - (from [v1.0.0-pre.2](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.2)) - ([af49a07](https://git.0xmax42.io/SimDev/scboot/commit/af49a070b40b9edcfca28a44d5fb7ac47c882abb))
+- *(makefile)* Ensure sbin dir is created during install - (from [v1.0.0-pre.1](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.1)) - ([36dbff4](https://git.0xmax42.io/SimDev/scboot/commit/36dbff43590a4931c1706b3f9e93ac0e4e3ef7fc))
+- *(makefile)* Install scboot binary into sbin instead of libexec - (from [v1.0.0-pre.1](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.1)) - ([e8f9c65](https://git.0xmax42.io/SimDev/scboot/commit/e8f9c65b5caa6f153a4e04b8b0795d64ed8b4066))
+- *(makefile)* Preserve subdirectories when building files - (from [v1.0.0-pre.0](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.0)) - ([f67e3fa](https://git.0xmax42.io/SimDev/scboot/commit/f67e3fa5e8da769a6083f2360ab7944cd4b94dcf))
+- *(scripts)* Use DER certificate path for dkms signing - (from [v1.0.0-pre.0](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.0)) - ([fe07dad](https://git.0xmax42.io/SimDev/scboot/commit/fe07dadf21f190521cc242fb16f47f1890328973))
+- *(makefile)* Run clean before build target - (from [v1.0.0-pre.0](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.0)) - ([eb60e36](https://git.0xmax42.io/SimDev/scboot/commit/eb60e36cda89747da3b4a0d0392e00c8aa2d33f8))
+- *(makefile)* Correct kernel signing template variable name - (from [v1.0.0-pre.0](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.0)) - ([773ee5c](https://git.0xmax42.io/SimDev/scboot/commit/773ee5ced6458ccd42e30c39c55c11987bc615f1))
+- *(makefile)* Copy config files into build directory - (from [v1.0.0-pre.0](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.0)) - ([4ad047f](https://git.0xmax42.io/SimDev/scboot/commit/4ad047faabe23c47c5fc1d4ccef883080f1a8f6b))
+- *(makefile)* Update uninstall targets for new files and dirs - (from [v1.0.0-pre.0](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.0)) - ([988aa9d](https://git.0xmax42.io/SimDev/scboot/commit/988aa9df10a29932f916a099695cba33e93833ec))
+- *(scripts)* Read VERSION from script directory - (from [v1.0.0-pre.0](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.0)) - ([48a43c4](https://git.0xmax42.io/SimDev/scboot/commit/48a43c4a288fd99cd4c2e2c880ae3541ffe85c51))
+- *(build)* Update changelog generation script URL - (from [v1.0.0-pre.0](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.0)) - ([3912df1](https://git.0xmax42.io/SimDev/scboot/commit/3912df13ba30c8c54bf8916c0e74f91167400ba8))
+
+### 🚜 Refactor
+
+- *(scripts)* Add helper to run external commands with logging - (from [v1.0.0-pre.7](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.7)) - ([0d4979c](https://git.0xmax42.io/SimDev/scboot/commit/0d4979cbaf2f074b9e1f4974fc8bd8bd7820758a))
+- *(scripts)* Extract shared config loading helper - (from [v1.0.0-pre.7](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.7)) - ([1aef8c9](https://git.0xmax42.io/SimDev/scboot/commit/1aef8c934970a7a36ee349100989c9fe915cba5c))
+- *(hooks)* Use secureboot sign macros in apt post invoke hooks - (from [v1.0.0-pre.0](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.0)) - ([2c5246f](https://git.0xmax42.io/SimDev/scboot/commit/2c5246fb5f8e542c2e2d7fff802073cad4ee89f2))
+- *(scripts)* Extract shared logging and config loader lib - (from [v1.0.0-pre.0](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.0)) - ([3130993](https://git.0xmax42.io/SimDev/scboot/commit/31309934d60e2b77143b58fea87087046300017c))
+- *(build)* Remove git-cliff installation script - (from [v1.0.0-pre.0](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.0)) - ([52e831d](https://git.0xmax42.io/SimDev/scboot/commit/52e831d93ca607eec3346a266df409627d8d3d8e))
+
+### 📚 Documentation
+
+- Add project overview and usage to README - (from [v1.0.0-pre.5](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.5)) - ([4f95f48](https://git.0xmax42.io/SimDev/scboot/commit/4f95f480d93872eb429a366225e8ebc50a2c01e6))
+
+### 🎨 Styling
+
+- *(makefile)* Remove verbose output from clean target - (from [v1.0.0-pre.0](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.0)) - ([1a55eda](https://git.0xmax42.io/SimDev/scboot/commit/1a55eda0c80f847157523ba02b92238918113a36))
+
+### ⚙️ Miscellaneous Tasks
+
+- Prepare release v1.0.0 - ([787ca59](https://git.0xmax42.io/SimDev/scboot/commit/787ca59a6f1f435f72e28fd8b02475eb69ff3aa0))
+- *(debian)* Install license and readme in doc directory - (from [v1.0.0-pre.6](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.6)) - ([b8112ec](https://git.0xmax42.io/SimDev/scboot/commit/b8112ecb481011ced8165e0d6cafcc02c2420215))
+- *(workflows)* Upload deb packages as release assets - (from [v1.0.0-pre.5](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.5)) - ([252cb32](https://git.0xmax42.io/SimDev/scboot/commit/252cb3257086f882d76def8ca013430152099ade))
+- *(workflows)* Simplify build workflow to use release tag ref - (from [v1.0.0-pre.5](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.5)) - ([8d5e5f7](https://git.0xmax42.io/SimDev/scboot/commit/8d5e5f7c8f551da6ff4f4ac6272ea5e9fb3aab9f))
+- Add project license file - (from [v1.0.0-pre.5](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.5)) - ([8385fc7](https://git.0xmax42.io/SimDev/scboot/commit/8385fc73a93471195fa8b9dcc2ac3dd440bd9d5e))
+- *(workflows)* Fix ref variable when determining build tag - (from [v1.0.0-pre.1](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.1)) - ([1c9403e](https://git.0xmax42.io/SimDev/scboot/commit/1c9403eaf0bc9e37a07b4c2860f3a626c68593e4))
+- *(workflows)* Support manual build dispatch with tag input - (from [v1.0.0-pre.0](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.0)) - ([16cdbbf](https://git.0xmax42.io/SimDev/scboot/commit/16cdbbfe221e80a6817f51ef06d45f09e73df364))
+- *(debian)* Mark scboot package as architecture independent - (from [v1.0.0-pre.0](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.0)) - ([5133e1f](https://git.0xmax42.io/SimDev/scboot/commit/5133e1f2e11be8124eac9ca904812792a25b44de))
+- Add makefile for build and install workflow - (from [v1.0.0-pre.0](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.0)) - ([a8d022e](https://git.0xmax42.io/SimDev/scboot/commit/a8d022e401ac7679bd065cf197c4a265689fce95))
+- Add debcrafter manifest for debian stable image - (from [v1.0.0-pre.0](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.0)) - ([f3e109f](https://git.0xmax42.io/SimDev/scboot/commit/f3e109fa73314a9dc3c89dcbe4b259c2c823dda3))
+- Update gitignore for build artifacts - (from [v1.0.0-pre.0](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.0)) - ([4ac19ac](https://git.0xmax42.io/SimDev/scboot/commit/4ac19acd975bef5170b5e30f0ef14b19f56b45e8))
+- *(debian)* Update packaging metadata and add copyright info - (from [v1.0.0-pre.0](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.0)) - ([8df5448](https://git.0xmax42.io/SimDev/scboot/commit/8df54480bd779a83ab6f7fc2bd1e073c6fb1fdfe))
+- *(workflows)* Update release and deb upload pipelines - (from [v1.0.0-pre.0](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.0)) - ([b2aa85a](https://git.0xmax42.io/SimDev/scboot/commit/b2aa85a1e5bc69c035e6dbba42296b9e35423b15))
+- Remove deprecated packaging and release automation files - (from [v1.0.0-pre.0](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.0)) - ([35829af](https://git.0xmax42.io/SimDev/scboot/commit/35829af89ff961e710d95a18cb768b13b82cef08))
+- *(ci)* Restrict release workflow to main branch only - (from [v1.0.0-pre.0](https://git.0xmax42.io/SimDev/scboot/releases/tag/v1.0.0-pre.0)) - ([7c1b9ae](https://git.0xmax42.io/SimDev/scboot/commit/7c1b9aefe520dbbcb70f4cfb2b45e69b945201a6))
+
 ## [1.0.0-pre.8](https://git.0xmax42.io/SimDev/scboot/compare/v1.0.0-pre.7..v1.0.0-pre.8) (pre-release) - 2026-01-01
 
 ### 🐛 Bug Fixes

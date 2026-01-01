@@ -5,6 +5,7 @@ SCRIPT_PATH="$(readlink -f -- "$0")"
 SCRIPT_DIR="$(dirname -- "${SCRIPT_PATH}")"
 # shellcheck source-path=./scripts
 source "${SCRIPT_DIR}/lib.sh"
+scboot_load_config
 
 if [[ -z "${DKMS_CONFIG_FILE:-}" ]]; then
     log_error "DKMS configuration file path not set in scboot.conf"

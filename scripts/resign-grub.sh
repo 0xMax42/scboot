@@ -5,6 +5,7 @@ SCRIPT_PATH="$(readlink -f -- "$0")"
 SCRIPT_DIR="$(dirname -- "${SCRIPT_PATH}")"
 # shellcheck source-path=./scripts
 source "${SCRIPT_DIR}/lib.sh"
+scboot_load_config
 
 [[ -e "${GRUB_SRC}" ]] || {
     log_error "GRUB source file not found: ${GRUB_SRC}"

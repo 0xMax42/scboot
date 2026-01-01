@@ -72,23 +72,6 @@ KERNEL_HASH_DIR=
 # shellcheck disable=SC2034
 DKMS_CONFIG_FILE=
 
-if [[ ! -f "${CONFIG_FILE}" ]]; then
-  log_error "Configuration file ${CONFIG_FILE} missing."
-  exit 1
-fi
-
-# Read INI-like file (key=value)
-# Comments (# or ;) are ignored
-while IFS='=' read -r key value; do
-  key="${key%%\#*}"                 # Remove everything after #
-  key="${key%%;*}"                  # Remove everything after ;
-  key="$(echo -n "${key}" | xargs)" # Trim
-  value="$(echo -n "${value}" | xargs)"
-  [[ -z "${key}" ]] && continue
-  export "${key}"="${value}"
-done <"${CONFIG_FILE}"
-
-# Ensure all required configuration values are available
 SCBOOT_REQUIRED_VARS=(
   KEY
   CRT
@@ -101,14 +84,43 @@ SCBOOT_REQUIRED_VARS=(
   DKMS_CONFIG_FILE
 )
 
-missing_vars=()
-for var in "${SCBOOT_REQUIRED_VARS[@]}"; do
-  if [[ -z "${!var:-}" ]]; then
-    missing_vars+=("${var}")
+_scboot_require_config_file() {
+  if [[ ! -f "${CONFIG_FILE}" ]]; then
+    log_error "Configuration file ${CONFIG_FILE} missing."
+    exit 1
   fi
-done
+}
 
-if ((${#missing_vars[@]})); then
-  log_error "Missing configuration values: ${missing_vars[*]}"
-  exit 1
-fi
+_scboot_parse_config_file() {
+  # Read INI-like file (key=value); ignore # and ; comments.
+  local key value
+  while IFS='=' read -r key value; do
+    key="${key%%\#*}"
+    key="${key%%;*}"
+    key="$(echo -n "${key}" | xargs)"
+    value="$(echo -n "${value}" | xargs)"
+    [[ -z "${key}" ]] && continue
+    export "${key}"="${value}"
+  done <"${CONFIG_FILE}"
+}
+
+_scboot_validate_required_vars() {
+  local missing_vars=()
+  local var
+  for var in "${SCBOOT_REQUIRED_VARS[@]}"; do
+    if [[ -z "${!var:-}" ]]; then
+      missing_vars+=("${var}")
+    fi
+  done
+
+  if ((${#missing_vars[@]})); then
+    log_error "Missing configuration values: ${missing_vars[*]}"
+    exit 1
+  fi
+}
+
+scboot_load_config() {
+  _scboot_require_config_file
+  _scboot_parse_config_file
+  _scboot_validate_required_vars
+}

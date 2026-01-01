@@ -98,6 +98,7 @@ sign_kernel() {
         echo "${NEW_HASH}  ${SRC}" >"${HASHFILE}"
 
         log_info "Done: ${SRC} (signed)"
+        log_success "Kernel ${BASENAME} signed successfully."
         cleanup 0
     )
     local sign_rc=$?
@@ -155,7 +156,7 @@ fi
 if [[ "${SCBOOT_KERNEL_SIGNED_ANY}" == "1" ]]; then
     if command -v update-grub >/dev/null 2>&1; then
         log_info "Updating GRUB configuration..."
-        update-grub
+        log_success "GRUB configuration updated."
     fi
 fi
 

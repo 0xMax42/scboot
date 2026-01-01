@@ -69,3 +69,5 @@ mkdir -p "$(dirname -- "${GRUB_HASH}")"
 echo "${CUR_HASH}  ${GRUB_SRC}" | tee "${GRUB_HASH}" >/dev/null
 
 log_info "Done. New signature active in ${GRUB_DST}"
+
+log_success "GRUB resigned successfully."

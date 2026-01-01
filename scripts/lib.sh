@@ -41,6 +41,13 @@ log_info() {
   fi
 }
 
+log_success() {
+  # Log to journal
+  _scboot_log <<<"SUCCESS: $*"
+  # And show to user
+  echo "[scboot] SUCCESS: $*"
+}
+
 log_error() {
   # Log to journal
   _scboot_log <<<"ERROR: $*"

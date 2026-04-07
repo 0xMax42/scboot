@@ -6,6 +6,7 @@ All notable changes to this project will be documented in this file.
 
 ### ⚙️ Miscellaneous Tasks
 
+- *(workflows)* Set deb distribution and component for releases - ([13e8acb](https://git.0xmax42.io/SimDev/scboot/commit/13e8acb8f68ca1a3faee00b8f3c99da47fd2d2fd))
 - *(workflows)* Sync releases between gitea and github - ([b426324](https://git.0xmax42.io/SimDev/scboot/commit/b42632494b0cecf6b67313d0a1416d7c73dd6bb4))
 
 ## [1.0.0](https://git.0xmax42.io/SimDev/scboot/compare/v1.0.0-pre.8..v1.0.0) - 2026-01-01
